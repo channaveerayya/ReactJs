@@ -8,7 +8,7 @@ import React, { Component } from 'react'
         this.emailInput=React.createRef();
         this.phoneInput=React.createRef();
     }
-    console.log("uncontroll")
+    
     onSubmit=e=>{
         e.preventDefault(); 
         const contact={
