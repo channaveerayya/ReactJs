@@ -1,6 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-
+ import {Consumer} from '../context';
 
 export default class Contact extends Component {
 
@@ -15,14 +15,21 @@ export default class Contact extends Component {
     showContactInfo:false
 
   };
- onDeleteClick=()=>{
-  this.props.deleteClickHandler();
+  onDeleteClick=(id,dispatch)=>{
+   dispatch({type:'DELETE_CONTACT',payload:id})
+ 
  }
 
   render() {
-    const {name,email,phone} = this.props.contact;
+    const {id,name,email,phone} = this.props.contact;
     const {showContactInfo}=this.state;
-    return (<div className = "card card-body md-3" >
+
+    return (
+    <Consumer>
+      { value=>{
+        const {dispatch}=value;
+        return(
+          <div className = "card card-body md-3" >
             <h4>
             { name}{' '}
             <i
@@ -36,7 +43,7 @@ export default class Contact extends Component {
             <i className="fas fa-times"
               style={{cursor:'pointer',color:'red',
                     float:'right'}}
-              onClick={this.onDeleteClick}        
+              onClick={this.onDeleteClick.bind(this,id,dispatch)}        
             />
             </h4>
             {showContactInfo ? (<ul className = "list-group" >
@@ -47,7 +54,11 @@ export default class Contact extends Component {
                 </ul>):null}
                
               </div>
-            );
+        )
+      }}
+    </Consumer>
+    
+   );
   }
 }
 
@@ -56,6 +67,6 @@ export default class Contact extends Component {
 
 Contact.propTypes = {
   contact: PropTypes.object.isRequired,
-  deleteClickHandler:PropTypes.func.isRequired
+ 
 
 };

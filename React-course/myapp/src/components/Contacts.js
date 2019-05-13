@@ -24,9 +24,7 @@ import {Consumer} from '../context';
                   (<Contact 
                     key={contact.id}
                     contact={contact}
-                    deleteClickHandler=
-                      {this.deleteContact.bind(this,contact.id)}
-                  />
+                   />
                 ))}
               </React.Fragment> 
           )}}
