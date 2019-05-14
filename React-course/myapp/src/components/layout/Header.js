@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-
+import {Link} from 'react-router-dom'
 export default function Header(props) {
 
   return ( <nav className="navbar navbar-expand navbar-dark bg-danger mb-3 py-0">
@@ -11,19 +11,19 @@ export default function Header(props) {
         <div>
             <ul className="navbar-nav mr-auto">
                 <li className="nav-item">
-                    <a href="/" className="nav-link">
-                        Home
-                    </a>
+                    <Link to="/" className="nav-link">
+                        <i className="fas fa-home">Home</i>
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a href="/" className="nav-link">
-                        Home
-                    </a>
+                    <Link to="/contact/add" className="nav-link">
+                       <i className='fas fa-plus'> Add</i>
+                    </Link>
                 </li>
                 <li className="nav-item">
-                    <a href="/" className="nav-link">
-                        Home
-                    </a>
+                    <Link to="/about" className="nav-link">
+                       <i className="fas fa-question"> About</i>
+                    </Link>
                 </li>
                 
             </ul>
