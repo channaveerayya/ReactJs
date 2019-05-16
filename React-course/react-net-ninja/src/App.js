@@ -9,17 +9,25 @@ export default class App extends Component {
             ]
   }
   addNinja=(ninja)=>{
-    ninja.id=Math.random(1);
+    ninja.id=Math.random();
     let ninjas=[...this.state.ninjas,ninja]
     this.setState({ninjas:ninjas})
     console.log(this.state);
+  }
+  DeleteNinja=(id)=>{
+    
+    let ninjaCopy=this.state.ninjas
+                  .filter(row=>{ 
+                    return(row.id!==id)
+                  });
+    this.setState({ninjas:ninjaCopy});
   }
   render() {
     return (
      
       <div className="container bg-dark my-4 text-capitalize text-light">
-        <Ninjas ninjas={this.state.ninjas} />
-        <AddNinjas addninja={this.addNinja}/>
+        <Ninjas deleteninja={this.DeleteNinja} ninjas={this.state.ninjas} />
+        <AddNinjas  addninja={this.addNinja}/>
       </div>
      
     )
