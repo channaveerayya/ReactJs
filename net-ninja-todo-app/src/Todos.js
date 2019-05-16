@@ -9,7 +9,7 @@ import React from 'react'
                  </div>
              )
          })
-     ) :(<p className="todos collection">You have no todos left yay</p>)
+     ) :(<p className="todos collection red-text">You have no todos left yay</p>)
   return (
     <div>
       {todolist}
