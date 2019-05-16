@@ -8,12 +8,18 @@ export default class App extends Component {
             {name:'basu',age:24,mob:'9980972009',id:3}
             ]
   }
+  addNinja=(ninja)=>{
+    ninja.id=Math.random(1);
+    let ninjas=[...this.state.ninjas,ninja]
+    this.setState({ninjas:ninjas})
+    console.log(this.state);
+  }
   render() {
     return (
      
       <div className="container bg-dark my-4 text-capitalize text-light">
         <Ninjas ninjas={this.state.ninjas} />
-        <AddNinjas />
+        <AddNinjas addninja={this.addNinja}/>
       </div>
      
     )

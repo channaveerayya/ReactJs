@@ -9,7 +9,7 @@ export default class AddNinjas extends Component {
     }
     handleSubmit=(e)=>{
         e.preventDefault();
-        console.log(this.state)
+       this.props.addninja(this.state)
     }
     handleChange=(e)=>{
         this.setState({[e.target.id]:e.target.value})
