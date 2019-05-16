@@ -8,6 +8,13 @@ export default class App extends Component {
             {name:'basu',age:24,mob:'9980972009',id:3}
             ]
   }
+  componentDidMount(){
+    console.log("componentdidmount");
+  }
+  componentDidUpdate(prevProps,prevStates){
+    console.log("componentDidUpdate")
+    console.log("prev props",prevProps,"prev states",prevStates);
+  }
   addNinja=(ninja)=>{
     ninja.id=Math.random();
     let ninjas=[...this.state.ninjas,ninja]
