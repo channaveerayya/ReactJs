@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
-import Ninjas from './Ninjas'
-import AddNinjas  from './AddNinjas'
+import Ninjas from './components/Ninjas'
+import AddNinjas  from './components/AddNinjas'
 export default class App extends Component {
   state={
     ninjas:[{name:'channu',age:26,mob:'9980972009',id:1},
