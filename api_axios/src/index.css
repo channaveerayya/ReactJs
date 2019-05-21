@@ -1,0 +1,17 @@
+body{
+    background-color: rgb(215, 229, 238);
+}
+.backimg{
+background-image: url(./components/404.jpg)
+}
+.backclr{
+    width:1500px;
+    margin-left:-7%;
+}
+.ex3 {
+    background-color: lightblue;
+   
+    height: 110px;
+    overflow: auto;
+  }
+  

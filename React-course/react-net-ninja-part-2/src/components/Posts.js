@@ -26,7 +26,7 @@ export default class Posts extends Component {
       <div className="center">Loading post....</div>
       )
     return (
-      <div className="container">
+      <div className="container home">
         {post}
       </div>
     )
