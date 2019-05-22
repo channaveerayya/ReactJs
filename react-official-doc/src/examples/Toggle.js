@@ -6,6 +6,14 @@ class Toggle extends React.Component {
   
       // This binding is necessary to make `this` work in the callback
       this.handleClick = this.handleClick.bind(this);
+
+     /* You have to be careful about the meaning of this in JSX callbacks.
+       In JavaScript, class methods are not bound by default. 
+       If you forget to bind this.handleClick and pass it to onClick,
+       this will be undefined when the function is actually called.
+
+       for more refer Bind.Js file
+      */
     }
   
     handleClick() {
