@@ -15,11 +15,15 @@ export default class Contact extends Component {
     showContactInfo:false
 
   };
-  
-  onDeleteClick=(id,dispatch)=>{
+  //wrong(becouse its a arrow function)
+  //async onDeleteClick=(id,dispatch)=>{  
 
-    axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
-         .then(res=>dispatch({type:'DELETE_CONTACT',payload:id}))
+  //right 
+  //onDeleteClick=async (id,dispatch)=>{}
+  onDeleteClick=async (id,dispatch)=>{
+
+   await axios.delete(`https://jsonplaceholder.typicode.com/users/${id}`)
+   dispatch({type:'DELETE_CONTACT',payload:id})
 
  }
 
