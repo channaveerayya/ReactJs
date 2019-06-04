@@ -48,7 +48,7 @@ class AddContact extends Component {
     });
     this.props.history.push('/');
 };
-    onAction=e=>this.setState(
+    onAction=e=>this.setState( 
         {[e.target.name]:e.target.value}
         )
   render() {

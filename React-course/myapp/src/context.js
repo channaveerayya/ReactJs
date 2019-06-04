@@ -1,7 +1,8 @@
 import React,{Component} from 'react'
-
+import axios from 'axios'
 const Context =React.createContext();
 const reducer=(state,action)=>{
+    console.log("states",action);
     switch(action.type){
         case 'DELETE_CONTACT':
         return{
@@ -22,31 +23,15 @@ const reducer=(state,action)=>{
 } 
 export class Provider extends Component{
     state={
-        contacts:[
-            {
-                id:1,
-                name:'Channu',
-                email:'channu@gmail.com',
-                phone:'998-097-2009'
-            },
-            {
-                id:2,
-                name:'Abi',
-                email:'abi@gmail.com',
-                phone:'99-000-2222'
-            },
-            {
-                id:3,
-                name:'Dinu',
-                email:'dinu@gmail.com',
-                phone:'918-111-0000'
-            }
-        ],
+        contacts:[],
         dispatch:action=>{
             this.setState(state=>reducer(state,action))
         }
     }
-
+    componentDidMount(){
+        axios.get( 'https://jsonplaceholder.typicode.com/users')
+        .then(res=>this.setState({contacts:res.data}));
+    }
     render(){
         return(
             <Context.Provider value={this.state}>

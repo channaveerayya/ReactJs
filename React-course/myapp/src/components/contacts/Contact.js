@@ -15,6 +15,7 @@ export default class Contact extends Component {
     showContactInfo:false
 
   };
+  
   onDeleteClick=(id,dispatch)=>{
    dispatch({type:'DELETE_CONTACT',payload:id})
  
