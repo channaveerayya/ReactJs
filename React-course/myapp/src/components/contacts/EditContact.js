@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+ import React, { Component } from 'react'
 import {Consumer} from '../../context'
 import uuid from 'uuid'
 import TextInputGroup from '../layout/TextInputGroup'
 import axios from 'axios'
-class AddContact extends Component {
+class EditContact extends Component {
 
 
     state={
@@ -12,7 +12,17 @@ class AddContact extends Component {
         phone:'',
         errors:{}
     }
-   
+    async componentDidMount(){
+        const { id }=this.props.match.params;
+        const res=await axios.get(`https://jsonplaceholder.typicode.com/users/${id}`)
+        const contact=res.data
+        this.setState({
+            name:contact.name,
+            email:contact.email, 
+            phone:contact.phone
+
+            })
+    }
     onSubmit=async (dispatch,e)=>{
         e.preventDefault(); 
         const {name,email,phone}=this.state;
@@ -31,17 +41,6 @@ class AddContact extends Component {
             return;
         }
         
-        const newContact={
-            name,
-            email,
-            phone
-            
-        };
-        const res=await axios.post('https://jsonplaceholder.typicode.com/users',newContact)
-        dispatch({type:'ADD_CONTACT',payload:res.data})
-        
-    
-
     //clear state
     this.setState({
         name:'',
@@ -65,7 +64,7 @@ class AddContact extends Component {
     return (
       <div className="card mb-3">
       <div className="card-header">
-          AddContact
+         Edit Contact
       </div>
       <div className="card-body">
           <form onSubmit={this.onSubmit.bind(this,dispatch)}>
@@ -98,7 +97,7 @@ class AddContact extends Component {
             error={errors.phone}
 
             />
-              <input type="submit" value="Add Contact"
+              <input type="submit" value="Update Contact"
               className="btn btn-block btn-light"/>
           </form>
       </div>
@@ -111,4 +110,4 @@ class AddContact extends Component {
     
   }
 }
-export default AddContact;
+export default EditContact;
